@@ -162,7 +162,7 @@ function sendMail(event) {
   var message = form.querySelector('[name="message"]').value;
 
   var subject = "Contact Form Submission from " + name;
-  var body = "Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message;
+  var body = "Name: " + name + "\n\nEmail: " + email + "\n\nMessage:\n" + message;
   var mailtoLink = "mailto:er.krishnatadi@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
 
   document.getElementById('loading-overlay').classList.add('show');
