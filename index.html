@@ -1,1420 +1,1118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KT - Personal Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- favicon -->
+  <title>Krishna Tadi Portfolio</title>
+
+   <!-- favicon -->
   <link rel="shortcut icon" href="./images/innovation.ico" type="image/x-icon">
 
-  <!-- custom css link -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- google font link -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Typed.js -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- AOS -->
+  <link rel="stylesheet"
+    href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+
 </head>
-<body ondragstart="return false;">
-  <!-- Main -->
-  <main>
-    <!-- Sidebar -->
-    <aside class="sidebar" data-sidebar>
+<body>
+  <!-- Cursor -->
+  <div id="cursor"></div>
 
-      <div class="sidebar-info">
+  <!-- Scroll Button -->
+  <button id="scrollTopBtn"
+    class="rainbow text-white shadow-2xl">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
 
-        <figure class="avatar-box">
-          <img src="./images/my-avatar.jpg" alt="Krishna Tadi" width="80">
-        </figure>
+  <!-- Smoke Effects -->
+  <div class="smoke bg-cyan-500 top-0 left-0"></div>
+  <div class="smoke bg-pink-500 bottom-0 right-0"></div>
 
-        <div class="info-content">
-          <h1 class="name" title="krishna tadi">Krishna Tadi</h1>
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 w-full z-50 glass">
 
-          <p class="title" style="text-align: center;">Senior Conversational AI Engineer<br/>AI/ML Engineer</p>
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+      <h1 class="text-4xl font-black gradient-text">
+        KT
+      </h1>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+
+        <a href="#home" class="hover:text-cyan-400 transition">
+          Home
+        </a>
+
+        <a href="#about" class="hover:text-cyan-400 transition">
+          About
+        </a>
+
+        <a href="#skills" class="hover:text-cyan-400 transition">
+          Skills
+        </a>
+
+        <a href="#experience" class="hover:text-cyan-400 transition">
+          Experience
+        </a>
+
+        <a href="#education" class="hover:text-cyan-400 transition">
+          Education
+        </a>
+
+        <a href="#certifications" class="hover:text-cyan-400 transition">
+          Certifications
+        </a>
+
+        <a href="#projects" class="hover:text-cyan-400 transition">
+          Projects
+        </a>
+
+        <a href="#contact" class="hover:text-cyan-400 transition">
+          Contact
+        </a>
+
+        <!-- Theme -->
+        <div class="relative">
+
+          <button id="themeBtn"
+            class="w-12 h-12 rounded-full rainbow text-white">
+            <i id="themeIcon" class="fa-solid fa-moon"></i>
+          </button>
+
+          <div id="themeMenu"
+            class="hidden absolute right-0 top-16 glass rounded-2xl p-3 w-44 space-y-2">
+
+            <button onclick="setTheme('light')"
+              class="w-full py-2 rounded-xl hover:bg-white/10 transition">
+
+              <i class="fa-solid fa-sun mr-2"></i>
+              Light
+
+            </button>
+
+            <button onclick="setTheme('dark')"
+              class="w-full py-2 rounded-xl hover:bg-white/10 transition">
+
+              <i class="fa-solid fa-moon mr-2"></i>
+              Dark
+
+            </button>
+
+            <button onclick="setTheme('system')"
+              class="w-full py-2 rounded-xl hover:bg-white/10 transition">
+
+              <i class="fa-solid fa-desktop mr-2"></i>
+              System
+
+            </button>
+
+          </div>
+
         </div>
 
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
+      </div>
 
-          <ion-icon name="chevron-down"></ion-icon>
+      <!-- Mobile Button -->
+      <button id="menuBtn"
+        class="md:hidden text-2xl">
+        <i id="menuIcon" class="fa-solid fa-bars"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobileNav"
+      class="mobile-nav md:hidden px-6">
+
+      <div class="flex flex-col gap-5 pb-6">
+
+        <a class="mobile-link" href="#home">Home</a>
+        <a class="mobile-link" href="#about">About</a>
+        <a class="mobile-link" href="#skills">Skills</a>
+        <a class="mobile-link" href="#experience">Experience</a>
+        <a class="mobile-link" href="#education">Education</a>
+        <a class="mobile-link" href="#certifications">Certifications</a>
+        <a class="mobile-link" href="#projects">Projects</a>
+        <a class="mobile-link" href="#contact">Contact</a>
+
+        <!-- Mobile Theme Menu -->
+        <div class="border-t border-slate-700 pt-5 mt-5">
+          <p class="text-sm font-bold text-cyan-400 mb-3">Theme</p>
+          <div class="flex flex-col gap-2">
+            <button onclick="setTheme('light')" class="py-2 px-3 rounded-lg hover:bg-white/10 transition text-left">
+              <i class="fa-solid fa-sun mr-2"></i>Light
+            </button>
+            <button onclick="setTheme('dark')" class="py-2 px-3 rounded-lg hover:bg-white/10 transition text-left">
+              <i class="fa-solid fa-moon mr-2"></i>Dark
+            </button>
+            <button onclick="setTheme('system')" class="py-2 px-3 rounded-lg hover:bg-white/10 transition text-left">
+              <i class="fa-solid fa-desktop mr-2"></i>System
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+  <section id="home"
+    class="hero-bg min-h-screen flex items-center pt-24 relative">
+
+    <div
+      class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center">
+
+      <!-- Left -->
+      <div data-aos="fade-right">
+
+        <p class="uppercase tracking-[6px] text-cyan-400 mb-4">
+          Senior AI Engineer & Automation Expert
+        </p>
+
+        <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+
+          Building
+          <span class="gradient-text">AI</span>
+          &
+          <span class="gradient-text">Automation</span>
+
+          Systems
+
+        </h1>
+
+        <h2 class="text-2xl mb-6">
+
+          Hi, I'm
+          <span class="text-cyan-400 font-bold">
+            Krishna Tadi
+          </span>
+
+        </h2>
+
+        <div class="text-2xl font-semibold h-10 mb-8">
+          <span id="typing"></span>
+        </div>
+
+        <p class="leading-8 text-slate-300 max-w-xl mb-8">
+
+          Senior AI Engineer, Automation Expert,
+          Generative AI Developer, Chatbot Specialist and
+          Full Stack Developer focused on intelligent enterprise systems.
+
+        </p>
+
+
+        <div class="flex flex-wrap gap-4">
+
+
+          <a href="#projects"
+            class="rainbow px-8 py-4 rounded-full font-semibold hover:scale-105 transition">
+
+            <i class="fa-solid fa-code mr-2"></i>
+            View Projects
+
+          </a>
+
+          <a href="#contact"
+            class="border border-cyan-400 px-8 py-4 rounded-full hover:bg-cyan-400 hover:text-black transition">
+
+            <i class="fa-solid fa-envelope mr-2"></i>
+            Contact Me
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Right -->
+      <div
+        class="relative flex justify-center items-center"
+        data-aos="fade-left">
+
+        <!-- Floating Code Snippets -->
+        <div class="floating-code code-snippet-1">{ AI: true }</div>
+        <div class="floating-code code-snippet-2">await innovation()</div>
+        <div class="floating-code code-snippet-3">const magic = AI()</div>
+
+        <!-- Tech Stats -->
+        <div class="tech-stat stat-ai">AI Engineer</div>
+        <div class="tech-stat stat-ml">ML Specialist</div>
+        <div class="tech-stat stat-cloud">Cloud Native</div>
+
+        <!-- Multiple Glow Rings -->
+        <div class="avatar-glow-ring-1"></div>
+        <div class="avatar-glow-ring-2"></div>
+        <div class="avatar-glow-ring-3"></div>
+
+        <!-- Pulse Mega Glow -->
+        <div class="avatar-pulse-glow"></div>
+
+        <!-- Inner Glow -->
+        <div class="avatar-inner-glow"></div>
+
+        <!-- Main Avatar Container -->
+        <div class="avatar-glow-container relative z-10">
+          <div
+            class="glass rounded-full p-4 border border-cyan-400/30 shadow-[0_0_80px_rgba(6,182,212,0.5)] hover:shadow-[0_0_100px_rgba(6,182,212,0.7)] transition-all duration-300 cursor-pointer group">
+
+            <img src="images/my-avatar.jpg"
+              alt="Krishna Tadi"
+              class="w-[340px] h-[340px] rounded-full object-cover border-4 border-cyan-400 group-hover:border-cyan-300 transition-colors">
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-24 px-6">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16" data-aos="fade-up">
+
+        <h2 class="text-5xl font-black gradient-text">
+          About Me
+        </h2>
+
+        <p class="text-slate-300 mt-6 max-w-3xl mx-auto leading-8">
+Experienced Senior Chatbot and Conversational AI Engineer specializing in building AI-driven automation and chatbot solutions for enterprise environments. Skilled in Microsoft Bot Framework, Kore.AI, LangChain, LangGraph, and full-stack development using Node.js, Python, HTML, CSS, and JavaScript. Experienced in deploying solutions on Azure and Google Cloud Platform using tools like Azure OpenAI, GPT-4, DALL·E, Whisper, Vertex AI, and Gemini. Delivered multiple generative AI POCs, RPA automations using UiPath, and enterprise integrations across ServiceNow, Jira, Confluence, and Salesforce. Strong background in process automation, incident management, and digital transformation initiatives, with a focus on scalable, secure & business-impacting AI solutions.
+<br/><br/>
+I'm always open to new opportunities and collaborations in the AI-driven automation space, where I aim to contribute to innovative, results-driven projects.
+        </p>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10">
+
+        <!-- Left -->
+        <div class="glass rounded-3xl p-10" data-aos="fade-right">
+
+          <h3 class="text-3xl font-bold mb-8 text-cyan-400">
+
+            <i class="fa-solid fa-user-tie mr-3"></i>
+            Professional Summary
+
+          </h3>
+
+          <div class="space-y-6 text-slate-300 leading-8">
+
+            <div class="flex gap-4">
+
+              <i class="fa-solid fa-brain text-cyan-400 text-2xl"></i>
+
+              <div>
+                Specialized in LLM Applications,
+                LangChain, LangGraph and intelligent AI systems.
+              </div>
+
+            </div>
+
+            <div class="flex gap-4">
+
+              <i class="fa-solid fa-robot text-pink-400 text-2xl"></i>
+
+              <div>
+                Developed enterprise AI Applications, Chatbots,
+                automation workflows and RPA systems.
+              </div>
+
+            </div>
+
+            <div class="flex gap-4">
+
+              <i class="fa-solid fa-cloud text-blue-400 text-2xl"></i>
+
+              <div>
+                Experienced with Azure, GCP, AWS and cloud-native AI deployments.
+                ServiceNow and DevOps.
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right -->
+        <div class="glass rounded-3xl p-10" data-aos="fade-left">
+
+          <h3 class="text-3xl font-bold mb-8 text-pink-400">
+
+            <i class="fa-solid fa-chart-line mr-3"></i>
+            Highlights
+
+          </h3>
+
+          <div class="grid grid-cols-2 gap-6">
+
+            <div class="text-center glass rounded-2xl p-6">
+
+              <h4 class="text-4xl font-black text-cyan-400">
+                5+
+              </h4>
+
+              <p class="mt-3">
+                Years Experience
+              </p>
+
+            </div>
+
+            <div class="text-center glass rounded-2xl p-6">
+
+              <h4 class="text-4xl font-black text-pink-400">
+                20+
+              </h4>
+
+              <p class="mt-3">
+                AI Projects
+              </p>
+
+            </div>
+
+            <div class="text-center glass rounded-2xl p-6">
+
+              <h4 class="text-4xl font-black text-blue-400">
+                15+
+              </h4>
+
+              <p class="mt-3">
+                Packages Published
+              </p>
+
+            </div>
+
+            <div class="text-center glass rounded-2xl p-6">
+
+              <h4 class="text-4xl font-black text-green-400">
+                10+
+              </h4>
+
+              <p class="mt-3">
+                Certifications
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+<!-- SKILLS -->
+<section id="skills" class="py-24 px-6 bg-slate-950/40 overflow-hidden">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-5xl font-black gradient-text">
+        Skills & Technologies
+      </h2>
+    </div>
+
+    <!-- MOVING SKILLS -->
+    <div class="skills-marquee">
+
+      <div class="skills-track">
+
+        <!-- CARD -->
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-brands fa-python text-5xl text-yellow-400 mb-5"></i>
+          <h3 class="text-xl font-bold">Python</h3>
+        </div>
+
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-brands fa-js text-5xl text-yellow-300 mb-5"></i>
+          <h3 class="text-xl font-bold">JavaScript</h3>
+        </div>
+
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-brands fa-react text-5xl text-cyan-400 mb-5"></i>
+          <h3 class="text-xl font-bold">ReactJS</h3>
+        </div>
+
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-brands fa-node-js text-5xl text-green-400 mb-5"></i>
+          <h3 class="text-xl font-bold">NodeJS</h3>
+        </div>
+
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-solid fa-robot text-5xl text-pink-400 mb-5"></i>
+          <h3 class="text-xl font-bold">Generative AI</h3>
+        </div>
+
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-solid fa-diagram-project text-5xl text-purple-400 mb-5"></i>
+          <h3 class="text-xl font-bold">LangGraph</h3>
+        </div>
+
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-solid fa-code-branch text-5xl text-cyan-400 mb-5"></i>
+          <h3 class="text-xl font-bold">LangChain</h3>
+        </div>
+
+        <!-- DUPLICATE -->
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-brands fa-python text-5xl text-yellow-400 mb-5"></i>
+          <h3 class="text-xl font-bold">Python</h3>
+        </div>
+
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-brands fa-js text-5xl text-yellow-300 mb-5"></i>
+          <h3 class="text-xl font-bold">JavaScript</h3>
+        </div>
+
+        <div class="skill-card glass rounded-3xl p-8 text-center">
+          <i class="fa-brands fa-react text-5xl text-cyan-400 mb-5"></i>
+          <h3 class="text-xl font-bold">ReactJS</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+<section id="experience" class="py-24 px-6 bg-slate-950/40">
+
+  <div class="max-w-7xl mx-auto">
+
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-5xl font-black gradient-text">
+        Professional Experience
+      </h2>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-14">
+
+      <!-- LEFT: BIG CODING / DEVELOPER SVG -->
+      <div class="hidden md:flex flex-col items-center justify-center" data-aos="fade-right">
+
+        <svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <defs>
+            <!-- glow -->
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+
+            <!-- gradient -->
+            <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#22d3ee"/>
+              <stop offset="100%" stop-color="#a78bfa"/>
+            </linearGradient>
+          </defs>
+
+          <!-- laptop base -->
+          <rect x="60" y="180" width="200" height="120" rx="12"
+            fill="#0f172a" stroke="url(#grad)" stroke-width="2"
+            filter="url(#glow)"/>
+
+          <!-- screen -->
+          <rect x="80" y="70" width="160" height="110" rx="10"
+            fill="#0b1220" stroke="url(#grad)" stroke-width="2"/>
+
+          <!-- code lines -->
+          <rect x="95" y="90" width="70" height="6" rx="3" fill="#22d3ee">
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+          </rect>
+
+          <rect x="95" y="110" width="110" height="6" rx="3" fill="#a78bfa">
+            <animate attributeName="opacity" values="0.2;1;0.2" dur="2.5s" repeatCount="indefinite"/>
+          </rect>
+
+          <rect x="95" y="130" width="90" height="6" rx="3" fill="#38bdf8">
+            <animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/>
+          </rect>
+
+          <!-- developer head -->
+          <circle cx="240" cy="60" r="18" fill="#22d3ee" opacity="0.8" filter="url(#glow)">
+            <animate attributeName="r" values="16;20;16" dur="2s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- body -->
+          <path d="M220 80 Q240 110 260 80 L260 140 Q240 160 220 140 Z"
+            fill="#a78bfa" opacity="0.7"/>
+
+          <!-- keyboard glow line -->
+          <line x1="80" y1="220" x2="240" y2="220"
+            stroke="url(#grad)" stroke-width="2" opacity="0.6">
+            <animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite"/>
+          </line>
+
+        </svg>
+
+        <p class="text-cyan-400 font-bold mt-6 text-center">
+          Building AI • Writing Code • Solving Problems
+        </p>
+      </div>
+
+      <!-- RIGHT: EXPERIENCE CARDS (UNCHANGED) -->
+      <div class="space-y-6 w-full" data-aos="fade-left">
+
+        <!-- TCS -->
+        <div class="glass rounded-2xl p-6 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 border border-cyan-500/20">
+
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h3 class="text-xl font-bold text-cyan-400">Senior AI Engineer & Chatbot Developer</h3>
+              <p class="text-slate-400 text-sm">Tata Consultancy Services</p>
+            </div>
+            <span class="badge bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+              2021 - Present
+            </span>
+          </div>
+
+          <p class="text-slate-300 text-sm mb-3">
+            Building enterprise AI systems, LLM applications, and intelligent automation solutions.
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+<!-- Chatbot Frameworks -->
+<span class="px-2 py-1 bg-cyan-500/10 text-cyan-300 text-xs rounded border border-cyan-500/20">Microsoft Bot Framework</span>
+<span class="px-2 py-1 bg-cyan-500/10 text-cyan-300 text-xs rounded border border-cyan-500/20">Microsoft Skill Framework</span>
+<span class="px-2 py-1 bg-cyan-500/10 text-cyan-300 text-xs rounded border border-cyan-500/20">Microsoft Bot Composer</span>
+<span class="px-2 py-1 bg-cyan-500/10 text-cyan-300 text-xs rounded border border-cyan-500/20">Azure Bot Service</span>
+
+<!-- Languages -->
+<span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded border border-purple-500/20">HTML</span>
+<span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded border border-purple-500/20">CSS</span>
+<span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded border border-purple-500/20">JavaScript</span>
+<span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded border border-purple-500/20">React Js</span>
+<span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded border border-purple-500/20">Bootstrap</span>
+<span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded border border-purple-500/20">NodeJS</span>
+<span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded border border-purple-500/20">Python</span>
+
+<!-- Chatbot Tools -->
+<span class="px-2 py-1 bg-blue-500/10 text-blue-300 text-xs rounded border border-blue-500/20">Kore.ai</span>
+<span class="px-2 py-1 bg-blue-500/10 text-blue-300 text-xs rounded border border-blue-500/20">Google DialogFlow</span>
+<span class="px-2 py-1 bg-blue-500/10 text-blue-300 text-xs rounded border border-blue-500/20">Salesforce</span>
+
+<!-- Robotic Process Automation -->
+<span class="px-2 py-1 bg-orange-500/10 text-orange-300 text-xs rounded border border-orange-500/20">UiPath</span>
+<span class="px-2 py-1 bg-orange-500/10 text-orange-300 text-xs rounded border border-orange-500/20">MS Office</span>
+<span class="px-2 py-1 bg-orange-500/10 text-orange-300 text-xs rounded border border-orange-500/20">SQL</span>
+<span class="px-2 py-1 bg-orange-500/10 text-orange-300 text-xs rounded border border-orange-500/20">SQL Server Management Studio</span>
+
+<!-- Cloud -->
+<span class="px-2 py-1 bg-indigo-500/10 text-indigo-300 text-xs rounded border border-indigo-500/20">Microsoft Azure</span>
+<span class="px-2 py-1 bg-indigo-500/10 text-indigo-300 text-xs rounded border border-indigo-500/20">Amazon Web Services</span>
+<span class="px-2 py-1 bg-indigo-500/10 text-indigo-300 text-xs rounded border border-indigo-500/20">Google Cloud</span>
+<span class="px-2 py-1 bg-indigo-500/10 text-indigo-300 text-xs rounded border border-indigo-500/20">Oracle</span>
+
+<!-- Incident Management -->
+<span class="px-2 py-1 bg-red-500/10 text-red-300 text-xs rounded border border-red-500/20">ServiceNow</span>
+
+<!-- Project Management -->
+<span class="px-2 py-1 bg-green-500/10 text-green-300 text-xs rounded border border-green-500/20">Jira</span>
+<span class="px-2 py-1 bg-green-500/10 text-green-300 text-xs rounded border border-green-500/20">Jile</span>
+
+<!-- Version Control Systems -->
+<span class="px-2 py-1 bg-pink-500/10 text-pink-300 text-xs rounded border border-pink-500/20">Git</span>
+<span class="px-2 py-1 bg-pink-500/10 text-pink-300 text-xs rounded border border-pink-500/20">GitHub</span>
+          </div>
+        </div>
+
+        <!-- Self Employed -->
+        <div class="glass rounded-2xl p-6 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 border border-purple-500/20">
+
+          <div class="flex justify-between items-start mb-3">
+            <div>
+              <h3 class="text-xl font-bold text-purple-400">IT Consultant</h3>
+              <p class="text-slate-400 text-sm"></p>
+            </div>
+            <span class="badge bg-purple-500/20 text-purple-300 border border-purple-500/30">
+              2018 - 2021
+            </span>
+          </div>
+
+          <p class="text-slate-300 text-sm mb-3">
+            Worked on web development, automation tools, and small-scale client projects.
+          </p>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-purple-500/10 text-purple-300 text-xs rounded border border-purple-500/20">Web Dev</span>
+            <span class="px-2 py-1 bg-pink-500/10 text-pink-300 text-xs rounded border border-pink-500/20">Automation</span>
+            <span class="px-2 py-1 bg-orange-500/10 text-orange-300 text-xs rounded border border-orange-500/20">Freelancing</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="py-24 px-6 bg-slate-950/40">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-5xl font-black gradient-text">Education</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <!-- LEFT: Education Graphics -->
+        <div class="hidden md:flex flex-col items-center justify-center" data-aos="fade-right">
+          <!-- <p class="text-purple-400 font-bold">Learning Path</p> -->
+        <img align="right" alt="coding" width="400" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"/>
+        </div>
+        <!-- RIGHT: Education Cards -->
+        <div class="space-y-6" data-aos="fade-left">
+          <!-- Education Item 1 -->
+          <div class="glass rounded-2xl p-6 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 border border-cyan-500/20">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <h3 class="text-xl font-bold text-cyan-400">Master of Business Administration</h3>
+                <p class="text-slate-400 text-sm">Andhra University</p>
+              </div>
+              <span class="badge bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">-</span>
+            </div>
+            <p class="text-slate-300 text-sm mb-3">Strong understanding of business administration and management principles.</p>
+          </div>
+          <div class="space-y-6" data-aos="fade-left">
+          <!-- Education Item 1 -->
+          <div class="glass rounded-2xl p-6 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 border border-cyan-500/20">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <h3 class="text-xl font-bold text-cyan-400">Bachelor of Technology - Civil Engineering</h3>
+                <p class="text-slate-400 text-sm">Acharya Nagarjuna University</p>
+              </div>
+              <span class="badge bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">-</span>
+            </div>
+            <p class="text-slate-300 text-sm mb-3">Strong foundation in construction management and civil engineering principles.</p>
+          </div>
+          <!-- Education Item 2 -->
+          <!-- <div class="glass rounded-2xl p-6 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 border border-purple-500/20">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <h3 class="text-xl font-bold text-purple-400">Professional Certifications</h3>
+                <p class="text-slate-400 text-sm">Google, AWS, Azure</p>
+              </div>
+              <span class="badge bg-purple-500/20 text-purple-300 border border-purple-500/30">2022 - 2024</span>
+            </div>
+            <p class="text-slate-300 text-sm">Generative AI, Cloud Engineering, Machine Learning certifications completed.</p>
+          </div> -->
+          <!-- Education Item 3 -->
+          <div class="glass rounded-2xl p-6 hover:shadow-lg hover:shadow-pink-500/20 transition-all duration-300 border border-pink-500/20">
+            <div class="flex justify-between items-start mb-3">
+              <div>
+                <h3 class="text-xl font-bold text-pink-400">Continuous Learning</h3>
+                <p class="text-slate-400 text-sm">Online Platforms</p>
+              </div>
+              <span class="badge bg-pink-500/20 text-pink-300 border border-pink-500/30">Ongoing</span>
+            </div>
+            <p class="text-slate-300 text-sm">Active participant in AI/ML specializations, workshops, and cutting-edge tech training.</p>
+          </div>
+        </div>
+      </div>
+
+          <!-- <div class="timeline-dot">
+            <i class="fa-solid fa-briefcase text-sm"></i>
+          </div> -->
+
+
+
+    </div>
+
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications"
+    class="py-24 px-6">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16" data-aos="fade-up">
+
+        <h2 class="text-5xl font-black gradient-text">
+          Certifications
+        </h2>
+
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <div class="cert-card glass rounded-3xl p-8 text-center">
+
+          <i class="fa-brands fa-google text-5xl text-cyan-400 mb-6"></i>
+
+          <h3 class="text-2xl font-bold mb-4">
+            Google Cloud
+          </h3>
+
+          <p class="text-slate-300 mb-6">
+            Professional Cloud & AI Certifications
+          </p>
+
+          <button
+            onclick="openFullModal('Google Certifications', certOne)"
+            class="rainbow px-6 py-3 rounded-full font-semibold">
+
+            <i class="fa-solid fa-certificate mr-2"></i>
+            View Certificate
+
+          </button>
+
+        </div>
+
+        <div class="cert-card glass rounded-3xl p-8 text-center">
+
+          <i class="fa-brands fa-aws text-5xl text-orange-400 mb-6"></i>
+
+          <h3 class="text-2xl font-bold mb-4">
+            AWS Cloud
+          </h3>
+
+          <p class="text-slate-300 mb-6">
+            Cloud Engineering Certifications
+          </p>
+
+          <button
+            onclick="openFullModal('AWS Certifications', certTwo)"
+            class="rainbow px-6 py-3 rounded-full font-semibold">
+
+            <i class="fa-solid fa-certificate mr-2"></i>
+            View Certificate
+
+          </button>
+
+        </div>
+
+        <div class="cert-card glass rounded-3xl p-8 text-center">
+
+          <i class="fa-brands fa-microsoft text-5xl text-blue-400 mb-6"></i>
+
+          <h3 class="text-2xl font-bold mb-4">
+            Azure AI
+          </h3>
+
+          <p class="text-slate-300 mb-6">
+            Azure AI & Cloud Certifications
+          </p>
+
+          <button
+            onclick="openFullModal('Azure Certifications', certThree)"
+            class="rainbow px-6 py-3 rounded-full font-semibold">
+
+            <i class="fa-solid fa-certificate mr-2"></i>
+            View Certificate
+
+          </button>
+
+        </div>
+
+        <div class="cert-card glass rounded-3xl p-8 text-center">
+
+          <i class="fa fa-certificate text-5xl text-blue-400 mb-6"></i>
+
+          <h3 class="text-2xl font-bold mb-4">
+            Other Certifications
+          </h3>
+
+          <p class="text-slate-300 mb-6">
+            Additional Professional Certifications
+          </p>
+
+          <button
+            onclick="openFullModal('Other Certifications', certFour)"
+            class="rainbow px-6 py-3 rounded-full font-semibold">
+
+            <i class="fa-solid fa-certificate mr-2"></i>
+            View Certificate
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-24 px-6">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-16" data-aos="fade-up">
+
+        <h2 class="text-5xl font-black gradient-text">
+          Projects
+        </h2>
+
+      </div>
+
+      <!-- FILTERS -->
+    <div class="flex flex-wrap justify-center gap-4 mb-10" id="filterBar">
+      <button class="filter-btn active" data-type="All">All</button>
+      <button class="filter-btn" data-type="Chatbot Development">Chatbot Development</button>
+      <button class="filter-btn" data-type="NPM Package">NPM Package</button>
+      <button class="filter-btn" data-type="PYPI Package">PYPI Package</button>
+      <button class="filter-btn" data-type="Web Extension">Web Extension</button>
+    </div>
+
+
+      <div id="projectGrid"
+        class="grid md:grid-cols-3 gap-8"></div>
+
+      <div class="text-center mt-14">
+
+        <button id="loadMoreBtn"
+          class="rainbow px-10 py-4 rounded-full font-bold hover:scale-105 transition">
+
+          <i class="fa-solid fa-layer-group mr-2"></i>
+
+          Show More Projects
+
         </button>
 
       </div>
 
-      <div class="sidebar-info_more">
+    </div>
 
-        <div class="separator"></div>
+  </section>
 
-        <ul class="contacts-list">
 
-          <li class="contact-item">
 
-            <div class="icon-box">
-              <i class="fa-solid fa-square-envelope"></i>
-            </div>
+  <!-- CONTACT -->
+  <section id="contact"
+    class="py-24 px-6 bg-slate-950/40">
 
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
+    <div class="max-w-7xl mx-auto">
 
-              <a href="mailto:er.krishnatadi@gmail.com" class="contact-link">er.krishnatadi@gmail.com</a>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box">
-              <i class="fa-regular fa-calendar-days"></i>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-              <time datetime="1982-06-23">January 19</time>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box">
-              <i class="fa-solid fa-location-dot"></i>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-              <address>Bapatla, Andhra Pradesh, India</address>
-            </div>
-          </li>
-        </ul>
-        <div class="separator"></div>
-        <ul class="social-list">
-        
-                    <li class="social-item">
-            <a href="https://www.linkedin.com/in/tadikrishna" class="social-link" target="_blank">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="https://www.github.com/krishnatadi" class="social-link" target="_blank">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="https://krishnatadi.medium.com" class="social-link" target="_blank">
-              <i class="fa-brands fa-medium"></i>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="https://dev.to/krishnatadi" class="social-link" target="_blank">
-              <i class="fa-brands fa-dev"></i>
-            </a>
-          </li>
-        
-          <li class="social-item">
-            <a href="https://www.x.com/drtadikrishna" class="social-link" target="_blank">
-              <i class="fa-brands fa-twitter"></i>
-            </a>
-          </li>
-        
-        </ul>
-        
+      <div class="text-center mb-16">
+
+        <h2 class="text-5xl font-black gradient-text">
+          Contact Me
+        </h2>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10">
+
+        <!-- Map -->
+        <div class="glass rounded-3xl overflow-hidden min-h-[500px]">
+
+          <iframe
+            src="https://maps.google.com/maps?q=india&t=&z=4&ie=UTF8&iwloc=&output=embed"
+            class="w-full h-full border-0"></iframe>
+
         </div>
-        
 
-    </aside>
+        <!-- Form -->
+        <form id="contactForm"
+          class="glass rounded-3xl p-10 space-y-6">
+
+          <input type="text"
+            id="name"
+            placeholder="Your Name"
+            class="w-full rounded-full bg-slate-900/70 px-6 py-4 outline-none border border-slate-700">
+
+          <input type="email"
+            id="email"
+            placeholder="Your Email"
+            class="w-full rounded-full bg-slate-900/70 px-6 py-4 outline-none border border-slate-700">
+
+          <textarea id="message"
+            rows="6"
+            placeholder="Your Message"
+            class="w-full rounded-3xl bg-slate-900/70 px-6 py-4 outline-none border border-slate-700"></textarea>
+
+          <button
+            class="w-full rainbow py-4 rounded-full font-bold text-lg">
+
+            <i class="fa-solid fa-paper-plane mr-2"></i>
+            Send Message
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </section>
+
+<!-- FOOTER -->
+<footer class="py-10 px-6 glass">
+
+  <div class="max-w-7xl mx-auto flex flex-col gap-8">
+
+    <!-- TOP ROW -->
+    <div class="flex flex-col md:flex-row justify-between items-start gap-10">
+
+      <!-- LEFT: BRAND + CERTIFICATIONS -->
+      <div class="text-center md:text-left">
+
+        <h2 class="text-2xl font-black gradient-text">
+          Krishna Tadi
+        </h2>
+
+        <p class="text-slate-300 mt-2">
+          Senior AI Engineer & Automation Expert
+        </p>
+
+        <!-- CERTIFICATIONS -->
+        <div class="mt-6 flex flex-wrap gap-3 justify-center md:justify-start">
+
+          <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-blue-400 transition">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Microsoft_Azure.svg"
+              alt="Azure"
+              width="18"
+              height="18"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              class="object-contain" />
+            <span class="text-xs text-slate-300">Azure Certified</span>
+          </div>
+
+          <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-cyan-400 transition">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+              alt="Google"
+              width="18"
+              height="18"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              class="object-contain" />
+            <span class="text-xs text-slate-300">Google Certified</span>
+          </div>
+
+          <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-yellow-400 transition">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
+              alt="AWS"
+              width="18"
+              height="18"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              class="object-contain" />
+            <span class="text-xs text-slate-300">AWS Certified</span>
+          </div>
 
-
-
-
-
-    <!-- main content -->
-
-    <div class="main-content">
-
-      <!-- Navbar -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Projects</button>
-          </li>
-          
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!-- ABOUT-->
-      <article class="about  active" data-page="about">
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            As an experienced senior chatbot/Conversational AI Developer and AI Engineer, I specialize in building innovative chatbot and AI solutions for the IT and services industry. My expertise spans across Microsoft Bot Framework, Skill Framework, Bot Composer, Kore.AI, LangChain, LangGraph & programming languages like Node.js, Python, HTML, CSS and JavaScript. I have extensive experience in designing, developing and deploying solutions on Microsoft Azure, Google Cloud Platform, utilizing cutting edge tools like Azure OpenAI models, DALL·E 3, GPT-4, Whisper, Bing Web Search, Vertex AI, Gemini, Cloud buckets, Google Lang Services and GCP Agents.
-          <br/><br/>
-          I have successfully developed and deployed several proof of concepts (POC's) centered around generative AI, demonstrating the real-world potential of Azure OpenAI solutions. My experience extends to ServiceNow and Incident Management, where I provide exceptional technical support and ensure smooth operations across various teams.
-          <br/><br/>
-          Additionally, I have experience using JIRA and Confluence for project management, issue tracking, and team collaboration. I am also familiar with Salesforce Chat Buttons for testing chatbot interactions and can integrate them to enable seamless transitions between chatbots and live agents. I am proficient in Nucleus for code scanning, helping ensure the quality & security of applications.
-          <br/><br/>
-          I also bring hands-on experience with UiPath, enabling large-scale end-to-end automation in businesses. I have developed automation solutions for various business processes, including Excel and mail automation, and have managed various administrative tasks. Additionally, I worked on enhancing the PTO (Paid Time Off) and Oncall MIM (Major Incident Management) processes, as well as the Chatbot OnBase invoice retrieval process and DHL tracking-related processes for Zebra Technologies. As both a Chatbot and RPA Technical Engineer, I contributed to streamlining these processes through the combination of chatbot and robotic process automation (RPA) technologies.
-          <br/><br/>
-          Experienced in Digital Marketing field and helped clients as a professional consultant and showed my expertise to grow their business to next level by using various digital marketing tactics.
-          <br/><br/>
-          I’m always open to new opportunities and collaborations in the AI-driven automation space, where I aim to contribute to innovative, results-driven projects.
-          </p>
-        </section>
-
-
-        <!-- service -->
-        <section class="service">
-          <h3 class="h3 service-title">What i'm doing</h3>
-          <ul class="service-list">
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <div class="icon-box">
-                  <i class="fa-solid fa-lightbulb" style="font-size: 26px;"></i>
-                </div>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Innovation</h4>
-
-                <p class="service-item-text">
-                  Innovation serves as the catalyst for progress, fueling creative solutions that reshape possibilities and foster transformative change across industries and communities.
-                </p>
-              </div>
-
-            </li>
-
-          
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <div class="icon-box">
-                  <i class="fa-solid fa-code" style="font-size: 26px;"></i>
-                </div>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Full Stack Development</h4>
-
-                <p class="service-item-text">
-                  As a full stack development expert, I create high-quality, scalable web applications and sites, utilizing front-end and back-end technologies to deliver seamless user experiences at a professional level.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <div class="icon-box">
-                  <i class="fa-brands fa-rocketchat" style="font-size: 26px;"></i>
-                </div>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Chatbot Development</h4>
-
-                <p class="service-item-text">
-                  As a Chatbot or Conversational AI developer, I design and implement intelligent business chatbots using platforms like Microsoft Bot Framework, Kore.ai, Dialogflow, for customer support, lead generation, and user engagement, delivering tailored solutions with exceptional standards.
-                </p>
-              </div>
-
-            </li>
-
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <div class="icon-box">
-                  <i class="fa-solid fa-robot" style="font-size: 26px;"></i>
-                </div>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">RPA (UiPath)</h4>
-
-                <p class="service-item-text">
-                  As an RPA expert, I design and implement UiPath solutions that automate repetitive tasks, streamline workflows, and enhance operational efficiency, enabling organizations to focus on strategic initiatives and drive significant productivity gains.
-                </p>
-              </div>
-
-            </li>
-
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <div class="icon-box">
-                  <i class="fa-brands fa-npm" style="font-size: 28px;"></i>
-                </div>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">NPM Package Development</h4>
-
-                <p class="service-item-text">
-                  As an NPM package developer, I create and maintain high-quality packages that enhance functionality, streamline integration, and support efficient development processes for the JavaScript ecosystem, ensuring robust solutions for developers.
-                </p>
-              </div>
-
-            </li>
-
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <div class="icon-box">
-                  <i class="fa-brands fa-python" style="font-size: 26px;"></i>
-                </div>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">PyPI Package Development</h4>
-
-                <p class="service-item-text">
-                  As a PyPI package developer, I create and maintain high-quality packages that improve functionality and support easy integration for Python developers.
-                </p>
-              </div>
-
-            </li>
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <div class="icon-box">
-                  <i class="fa-solid fa-atom" style="font-size: 26px;"></i>
-                </div>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Artificial Intelligence Developer</h4>
-
-                <p class="service-item-text">
-                  Proficient in designing, developing and deploying solutions on Microsoft Azure, with hands-on experience working on embedded Azure Open AI models, Dall-E 3, GPT-4, Whisper, Bing Web Search. Built several proof of concepts (POC) related to generative AI using Azure OpenAI solutions.
-                </p>
-              </div>
-
-            </li>
-
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <div class="icon-box">
-                  <i class="fa-solid fa-bullhorn" style="font-size: 26px;"></i>
-                </div>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Digital Marketing</h4>
-
-                <p class="service-item-text">
-                  As a digital marketing expert, I create effective strategies, including SEO, content marketing, and social media, that drive engagement and growth at a professional level.
-                </p>
-              </div>
-
-            </li>
-           
-
-          </ul>
-
-        </section>
-
-
-        <!-- testimonials modal -->
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-          </section>
         </div>
-      </article>
+      </div>
 
+      <!-- CENTER: SUBSCRIBE CTA -->
+       <div class="flex flex-col items-center gap-4">
+      <p class="text-slate-300 font-semibold">What I Do</p>
 
+        <div class="text-sm text-slate-400 space-y-1">
+          <p>AI Agents</p>
+          <p>LLM Workflows</p>
+          <p>RAG-based Applications</p>
+          <p>RPA (UiPath)/API Automation</p>
+        </div>
 
+        <!-- CTA BUTTON -->
+        <a href="#contact"
+          class="mt-3 px-5 py-2 rounded-md bg-cyan-500 hover:bg-cyan-400 text-black text-sm font-semibold transition">
+          Let’s Work Together
+        </a>
+      </div>
 
+      <!-- RIGHT: SOCIAL ICONS -->
+      <div class="flex flex-col items-center md:items-end gap-3">
 
-      <!-- Resume -->
+        <p class="text-slate-400 text-sm">Connect with me</p>
 
-      <article class="resume" data-page="resume">
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-        <section class="timeline">
+        <div class="flex gap-5 text-2xl">
 
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <i class="fa-solid fa-lock" style="font-size: 26px;"></i>
-            </div>
+          <a href="https://github.com/krishnatadi" target="_blank" class="hover:text-cyan-400 transition">
+            <i class="fa-brands fa-github"></i>
+          </a>
 
-            <h3 class="h3">Experience</h3>
-          </div>
+          <a href="https://in.linkedin.com/in/tadikrishna" target="_blank" class="hover:text-cyan-400 transition">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
 
-          <ol class="timeline-list">
-            <li class="timeline-item">
+          <a href="https://www.x.com/drtadikrishna" target="_blank" class="hover:text-cyan-400 transition">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
 
-              <h4 class="h4 timeline-item-title">Senior AI Engineer</h4>
+          <a href="https://krishnatadi.medium.com/" target="_blank" class="hover:text-cyan-400 transition">
+            <i class="fa-brands fa-medium"></i>
+          </a>
 
-              <span>Dec 2021 - Present &nbsp; &middot; &nbsp;<script>var s=new Date("2021-12-31"),e=new Date(),d=(e.getFullYear()-s.getFullYear())*12+e.getMonth()-s.getMonth()+1;if(e.getDate()<s.getDate()){d--}var y=Math.floor(d/12),m=d%12,r="";if(y>0){r+=y+" yrs";if(m>0){r+=" "}}if(m>0){r+=m+" mos"}document.write(r);</script></span>
+          <a href="https://dev.to/krishnatadi" target="_blank" class="hover:text-cyan-400 transition">
+            <i class="fa-brands fa-dev"></i>
+          </a>
 
-              <p class="timeline-text">
-                Tata Consultancy Services
-              </p>
-<br/><br/>
+          <a href="https://www.npmjs.com/~krishnatadi" target="_blank" class="hover:text-cyan-400 transition">
+            <i class="fa-brands fa-npm text-lg"></i>
+          </a>
 
-              <ul class="timeline-list">
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Conversational AI Engineer</h4>
+          <a href="https://pypi.org/user/krishnatadi/" target="_blank" class="hover:text-cyan-400 transition">
+            <i class="fa-brands fa-python text-lg"></i>
+          </a>
 
-                  <span>Mar 2023 - Present &nbsp; &middot; &nbsp;<script>var s=new Date("2022-04-01"),e=new Date(),d=(e.getFullYear()-s.getFullYear())*12+e.getMonth()-s.getMonth()+1;if(e.getDate()<s.getDate()){d--}var y=Math.floor(d/12),m=d%12,r="";if(y>0){r+=y+" yrs";if(m>0){r+=" "}}if(m>0){r+=m+" mos"}document.write(r);</script></span>
-    
-                  <p class="timeline-text">
-                    Zebra Technologies
-                  </p>
-              </li>
+        </div>
 
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Software Development Engineer</h4>
-  
-                  <span>Dec 2021 - Mar 2023 &nbsp; &middot; &nbsp;<script>var startDate = new Date("2021-12-01"); var endDate = new Date("2023-03-01"); var diffMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 + endDate.getMonth() - startDate.getMonth(); if (endDate.getDate() < startDate.getDate()) { diffMonths--; } diffMonths++; document.write(diffMonths + " mos");</script></span>
-                </span>
+      </div>
 
-                  <p class="timeline-text">
-                    MFDM
-                  </p>
-              </li>
-            </ul>
+    </div>
 
-            </li>
-          </ol>
+    <!-- BOTTOM COPYRIGHT -->
+    <div class="border-t border-white/10 pt-6 text-center text-slate-400 text-sm">
 
-        </section>
+      <p>
+        © <span id="year"></span> Krishna Tadi. All Rights Reserved.
+      </p>
 
+    </div>
 
-        <br/><br/>
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <i class="fa-solid fa-book-open" style="font-size: 26px;"></i>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Andhra University</h4>
-
-              <span></span>
-
-              <p class="timeline-text">
-                Master of Business Administration
-              </p>
-
-            </li>
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Acharya Nagarjuna University</h4>
-
-              <span></span>
-
-              <p class="timeline-text">
-                Bachelor of Technology - Civil Engineering
-              </p>
-
-            </li>
-          </ol>
-
-        </section>
-
-
-<br/><br/>
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <i class="fa-solid fa-ribbon" style="font-size: 26px;"></i>
-            </div>
-
-            <h3 class="h3">Certifications</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Microsoft Azure</h4>
-
-              <span></span>
-
-              <p class="timeline-text">
-                
-              </p>
-              <br/>
-
-              <ul class="timeline-list">
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Microsoft Certified: Azure AI Engineer Associate</h4>
-                  <span></span>
-              </li>
-
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Microsoft Certified: Azure Administrator Associate</h4>
-                  <span></span>
-              </li>
-            </ul>
-              
-
-            </li>
-            <br/>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Google Certifications</h4>
-              <span></span>
-              <br/>
-
-              <ul class="timeline-list">
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Generative AI Leader Certified</h4>
-                  <span></span>
-              </li>
-
-              <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Professional Machine Learning Engineer Certified</h4>
-                  <span></span>
-              </li>
-
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Google Analytics Certified</h4>
-                  <span></span>
-              </li>
-
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Campaign manager 360 Certified</h4>
-                  <span></span>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">Conversion Optimization Certified</h4>
-                <span></span>
-              </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Display & Video 360 Certified</h4>
-              <span></span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Google Ads Search Certified</h4>
-              <span></span>
-            </li>
-            </ul>
-            </li>
-            <br/>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Amazon Web Services(AWS)</h4>
-              <span></span>
-              <br/>
-              <ul class="timeline-list">
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">AWS Certified Cloud Practitioner</h4>
-                  <span></span>
-              </li>
-            </ul>
-            </li>
-
-            <br/>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Kore.ai</h4>
-              <span></span>
-              <br/>
-              <ul class="timeline-list">
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Automation AI/Platform Developer Certified</h4>
-                  <span></span>
-              </li>
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">Contact Center/Smart Assist Certified</h4>
-                <span></span>
-            </li>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Search Assist</h4>
-              <span></span>
-            </li>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Agent AI</h4>
-              <span></span>
-            </li>
-            </ul>
-            </li>
-          </ol>
-
-        </section>
-
-
-<br/><br/>
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <i class="fa-solid fa-gear" style="font-size: 26px;"></i>
-            </div>
-
-            <h3 class="h3">Technical Skills</h3>
-          </div>
-
-          <ol class="timeline-list">
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Chatbot Frameworks</h4>
-
-              <span></span>
-
-              <p class="timeline-text">
-                
-              </p>
-              <br/>
-
-              <ul class="timeline-list">
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Microsoft Bot Framework</h4>
-                  <span></span>
-              </li>
-
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Microsoft Skill Framework</h4>
-                  <span></span>
-              </li>
-            </ul>
-              
-
-            </li>
-            <br/>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Languages</h4>
-              <span></span>
-              <br/>
-
-              <ul class="timeline-list">
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">HTML, CSS, JavaScript, React Js, Bootstrap</h4>
-                  <span></span>
-              </li>
-
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">NodeJS, Python</h4>
-                  <span></span>
-              </li>
-            </ul>
-            </li>
-            <br/>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Tools</h4>
-              <span></span>
-              <br/>
-              <ul class="timeline-list">
-                <li class="timeline-item">
-                  <h4 class="h4 timeline-item-title">Kore.ai, Google DialogFlow, AWS Lex Salesforce, Microsoft Bot Composer</h4>
-                  <span>Chatbot</span>
-              </li>
-
-              <li class="timeline-item">
-                <h4 class="h4 timeline-item-title">UiPath, MS Office, SQL, SQL Server Management Studio</h4>
-                <span>Robotic Process Automation</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Microsoft Azure, Amazon Web Services, Google Cloud, Salesforce, Oracle</h4>
-              <span>Cloud</span>
-          </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">ServiceNow</h4>
-              <span>Incident Management</span>
-          </li>
-
-          <li class="timeline-item">
-            <h4 class="h4 timeline-item-title">Jira, Jile</h4>
-            <span>project management</span>
-          </li>
-
-          <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">Git, GitHub</h4>
-          <span>Version control systems</span>
-          </li>
-            </ul>
-            </li>
-          </ol>
-
-        </section>
-
-
-
-        <br/><br/>
-        <section class="timeline">
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <i class="fa-solid fa-screwdriver-wrench" style="font-size: 26px;"></i>
-            </div>
-            <h3 class="h3">Soft Skills</h3>
-          </div>
-          <ol class="timeline-list">
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Communication</h4>
-              <span>Strong verbal and written communication skills demonstrated through clear and concise correspondence with colleagues and clients.</span>
-              <p class="timeline-text">
-              </p>
-            </li>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Teamwork and Collaboration</h4>
-              <span>Proven ability to collaborate with cross-functional teams, fostering a positive and supportive team environment to achieve project goals.</span>
-            </li>
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Problem-Solving</h4>
-              <span>Utilized analytical and problem-solving skills to identify and resolve issues, ensuring timely project delivery and client satisfaction.</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Adaptability and Flexibility</h4>
-              <span>Adapted quickly to changing priorities and requirements, maintaining productivity and delivering high-quality work in dynamic environments</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Time Management</h4>
-              <span>Consistently met deadlines and project milestones by effectively managing tasks and resources, optimizing workflow for efficiency.</span>
-            </li>
-
-            <li class="timeline-item">
-              <h4 class="h4 timeline-item-title">Leadership</h4>
-              <span>Demonstrated leadership qualities by taking initiative in guiding and mentoring team members, driving success in collaborative projects.</span>
-            </li>
-          </ol>
-
-        </section>
-
-
-<br/><br/>
-        <section class="skill">
-          <h3 class="h3 skills-title">Overall skills</h3>
-          <ul class="skills-list content-card">
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Machine Learning</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Generative AI</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Web Development</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Chatbot Development</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">RPA UiPath</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Digital Marketing</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Cloud</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Project Management</h5>
-                <data value="60">60%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 60%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!-- Portfolio -->
-      <article class="portfolio" data-page="portfolio">
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-        </header>
-        <section class="projects">
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn="">All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn="">Chatbot Development</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn="">Web development</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn="">NPM Packages</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn="">PyPI Packages</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn="">Extensions</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item="">All</button>
-              </li>
-      
-              <li class="select-item">
-                <button data-select-item="">Chatbot Development</button>
-              </li>
-      
-              <li class="select-item">
-                <button data-select-item="">Web development</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item="">NPM Packages</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item="">PyPI Packages</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item="">Extensions</button>
-              </li>
-      
-            </ul>
-          </div>
-
-          <ul class="project-list">
-            <li class="project-item  active" data-filter-item data-category="chatbot development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/kai-bot.jpg" alt="kai-bot" loading="lazy">
-                </figure>
-                <a href="https://github.com/Krishnatadi/KAI-AI-Chatbot" target="_blank">
-                  <h3 class="project-title">KAI is an AI chatbot which works with open ai api and can be used for various uses.</h3>
-                </a>
-                <p class="project-category">Chatbot Development</p>
-              </a>
-            </li>
-            
-            <li class="project-item  active" data-filter-item data-category="chatbot development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/simple-chatbot-1.jpg" alt="simple-chatbot" loading="lazy">
-                </figure>
-                <a href="https://github.com/Krishnatadi/chatbot-1" target="_blank">
-                  <h3 class="project-title">Simple Chatbot</h3>
-                </a>
-                <p class="project-category">chatbot development</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/twi-hospitals.jpg" alt="twi-hospitals" loading="lazy">
-                </figure>
-                <a href="#">
-                  <h3 class="project-title">Hospital Website</h3>
-                </a>
-                <p class="project-category">Web development</p>
-              </a>
-            </li>
-            
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/login-signup-project.jpg" alt="login-signup" loading="lazy">
-                </figure>
-                <a href="https://github.com/Krishnatadi/login-signup-v1" target="_blank">
-                  <h3 class="project-title">Login/Signup Form</h3>
-                </a>
-                <p class="project-category">Web development</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/temperature-converter.jpg" alt="temperature-converter" loading="lazy">
-                </figure>
-                <a href="https://github.com/Krishnatadi/temperature-converter" target="_blank">
-                  <h3 class="project-title">Temperature Converter</h3>
-                </a>
-                <p class="project-category">Web development</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/web-scrapping-tool-v1.jpg" alt="temperature-converter" loading="lazy">
-                </figure>
-                <a href="https://github.com/Krishnatadi/Web-Scraping-and-Chat-Tool" target="_blank">
-                  <h3 class="project-title">Interactive Web Scrapping Tool</h3>
-                </a>
-                <p class="project-category">Web development</p>
-              </a>
-            </li>
-
-
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/bmi-calculator.JPG" alt="bmi-calculator" loading="lazy">
-                </figure>
-                <a href="https://krishnatadi.github.io/bmi-calculator/" target="_blank">
-                  <h3 class="project-title">BMI Calculator</h3>
-                </a>
-                <p class="project-category">Web development</p>
-              </a>
-            </li>
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/textifyer.JPG" alt="textifyer" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/textifyer" target="_blank">
-                  <h3 class="project-title">Textifyer (NPM)</h3>
-                </a>
-                <p class="project-category">Textifyer is a powerful package for analyzing text. It provides functionalities for character counts (with/without spaces), word, sentence, and paragraph counts, space count, reading time estimation, readability score, keyword density, lexical diversity, and syllable counting.</p>
-              </a>
-            </li>
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/casefyer.JPG" alt="casefyer" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/casefyer" target="_blank">
-                  <h3 class="project-title">Casefyer (NPM)</h3>
-                </a>
-                <p class="project-category">Casefyer is a simple and versatile npm package for converting text into various cases, such as uppercase, lowercase, sentence case, title case, alternating case, and inverse case. It's designed to help developers quickly and efficiently transform text.</p>
-              </a>
-            </li>
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/saltyhash.JPG" alt="saltyhash" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/saltyhash" target="_blank">
-                  <h3 class="project-title">SaltyHash (NPM)</h3>
-                </a>
-                <p class="project-category">SaltyHash is a robust password hashing library that combines salting and hashing to enhance security. It validates password strength to ensure secure authentication practices, making it an ideal choice for developers looking to protect user credentials effectively.</p>
-              </a>
-            </li>
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/accessotp.JPG" alt="accessotp" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/accessotp" target="_blank">
-                  <h3 class="project-title">AccessOTP (NPM)</h3>
-                </a>
-                <p class="project-category">AccessOTP is a secure, scalable, and easy-to-use OTP (One-Time Password) generator and validator. It supports both numeric and alphanumeric OTPs, customizable OTP lengths, and expiration times, making it ideal for applications requiring authentication, verification, or security checks.</p>
-              </a>
-            </li>
-
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/accessotp.JPG" alt="alluuid" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/accessotp" target="_blank">
-                  <h3 class="project-title">ALLUUID (NPM)</h3>
-                </a>
-                <p class="project-category">ALLUUID is a versatile JavaScript library for generating universally unique identifiers (UUIDs) and GUIDs. It supports multiple versions of UUIDs, including version 1, version 4 & version 7. This tool is ideal for developers looking to create unique identifiers for databases, session tokens or any other use cases where uniqueness is critical.</p>
-              </a>
-            </li>
-
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/epochtoolkit.JPG" alt="epochtoolkit" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/epochtoolkit" target="_blank">
-                  <h3 class="project-title">epochToolkit (NPM)</h3>
-                </a>
-                <p class="project-category">epochToolkit is a comprehensive toolkit for managing dates, times, and epoch conversions in JavaScript. It provides a suite of utilities to convert between date strings and epoch times, format dates and times, validate date strings, and check for leap years. With this toolkit, you can simplify date and time management in your JavaScript projects.</p>
-              </a>
-            </li>
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/colorcycle.JPG" alt="colorcycle" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/colorcycle" target="_blank">
-                  <h3 class="project-title">ColorCycle (NPM)</h3>
-                </a>
-                <p class="project-category">ColorCycle is a JavaScript package that helps developers easily convert color formats between Hex, RGB, and HSL. This tool is ideal for designers and developers working on color management for websites, applications, and graphical projects. Simply provide a color in any of the supported formats, and ColorCycle will convert it into the others.</p>
-              </a>
-            </li>
-
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/random-password-toolkit.JPG" alt="random-password-toolkit" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/random-password-toolkit" target="_blank">
-                  <h3 class="project-title">Random Password Toolkit (NPM)</h3>
-                </a>
-                <p class="project-category">Random Password Toolkit is a robust package for generating and managing random passwords with advanced functionalities such as encryption, decryption, strength checking, and customizable options. This toolkit is perfect for developers looking for a secure and feature-rich solution to handle password-related tasks in their applications.</p>
-              </a>
-            </li>
-
-
-
-            <li class="project-item  active" data-filter-item data-category="npm packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/jwt-pro.JPG" alt="jwt-pro" loading="lazy">
-                </figure>
-                <a href="https://www.npmjs.com/package/jwt-pro" target="_blank">
-                  <h3 class="project-title">JWT Pro (NPM)</h3>
-                </a>
-                <p class="project-category">JWT Pro is a powerful library for generating and verifying JSON Web Tokens (JWTs). It supports multiple algorithms, provides easy to use utilities for token management, and ensures secure handling of JWTs.</p>
-              </a>
-            </li>
-
-
-
-            <li class="project-item  active" data-filter-item data-category="pypi packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/alluuidpypi.JPG" alt="alluuid-pypi" loading="lazy">
-                </figure>
-                <a href="https://pypi.org/project/alluuid/" target="_blank">
-                  <h3 class="project-title">ALL UUID (PYPI)</h3>
-                </a>
-                <p class="project-category">AllUUID is a versatile Python library for generating universally unique identifiers (UUIDs) and GUIDs. It supports multiple versions of UUIDs, including version 1, version 4, and version 7. This tool is ideal for developers looking to create unique identifiers for databases, session tokens, or any other use cases where uniqueness is critical.</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="pypi packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/easyscrapper.JPG" alt="easyscrapper-pypi" loading="lazy">
-                </figure>
-                <a href="https://pypi.org/project/easyscrapper/" target="_blank">
-                  <h3 class="project-title">EasySCrapper</h3>
-                </a>
-                <p class="project-category">EasyScrapper is a simple and effective Python package for web scraping. It allows you to fetch and extract data from any website without the hassle of complex parsing logic. This package is designed for developers who need quick and reliable web scraping solutions.</p>
-              </a>
-            </li>
-
-
-            <li class="project-item  active" data-filter-item data-category="pypi packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/colorcycle-pypi.JPG" alt="colorcycle-pypi" loading="lazy">
-                </figure>
-                <a href="https://pypi.org/project/colorcycle/" target="_blank">
-                  <h3 class="project-title">ColorCycle (PYPI)</h3>
-                </a>
-                <p class="project-category">ColorCycle is a Python package that helps developers easily convert color formats between Hex, RGB, and HSL. This tool is ideal for designers and developers working on color management for websites, applications, and graphical projects. Simply provide a color in any of the supported formats, and ColorCycle will convert it into the others.</p>
-              </a>
-            </li>
-
-
-            <li class="project-item  active" data-filter-item data-category="pypi packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/random-password-toolkit-pypi.JPG" alt="random-password-toolkit-pypi" loading="lazy">
-                </figure>
-                <a href="https://pypi.org/project/random-password-toolkit/" target="_blank">
-                  <h3 class="project-title">Random Password Toolkit (PYPI)</h3>
-                </a>
-                <p class="project-category">Random Password Toolkit is a robust Python package for generating and managing random passwords with advanced features, including encryption, decryption, strength checking, and customizable generation options. This package is ideal for Python developers looking for a secure and feature-rich solution for handling password-related tasks.</p>
-              </a>
-            </li>
-
-
-            <li class="project-item  active" data-filter-item data-category="pypi packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/jwt-pro-pypi.JPG" alt="jwt-pro-pypi" loading="lazy">
-                </figure>
-                <a href="https://pypi.org/project/jwt-pro/" target="_blank">
-                  <h3 class="project-title">JWT PRO (PYPI)
-                  </h3>
-                </a>
-                <p class="project-category">JWT Pro is a package for generating and verifying JSON Web Tokens (JWTs). It supports AES encryption and HMAC signatures, enabling secure user authentication and data transmission. The package is highly customizable, with options for adding encryption, defining headers and payloads, and validating tokens.</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="pypi packages">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/auditly-pypi.PNG" alt="auditly-pypi" loading="lazy">
-                </figure>
-                <a href="https://pypi.org/project/auditly/" target="_blank">
-                  <h3 class="project-title">Auditly
-                  </h3>
-                </a>
-                <p class="project-category">Auditly is a modern, developer-friendly Python dependency security and dependency-analysis CLI tool that helps teams identify vulnerabilities, risky versions, and dependency issues early - before they reach production.</p>
-                <p class="project-category">Auditly focuses on clarity, speed, and actionable output, making security understandable and fixable for developers.</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="extensions">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/SnapEdge-extension.png" alt="snapEdge-extension" loading="lazy">
-                </figure>
-                <a href="https://microsoftedge.microsoft.com/addons/detail/ffapgjjedncbacmhbeipdoeinlmblllc" target="_blank">
-                  <h3 class="project-title">SnapEdge
-                  </h3>
-                </a>
-                <p class="project-category">SnapEdge is a lightweight screenshot tool for Microsoft Edge that allows you to capture your current tab and annotate instantly with arrows, rectangles, text, highlights, and blur tools - all offline.</p>
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="extensions">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-                  <img src="./images/ColorLens-extension.png" alt="colorLens-extension" loading="lazy">
-                </figure>
-                <a href="https://microsoftedge.microsoft.com/addons/detail/hmopoebhhngahnkomegieememlkghijp" target="_blank">
-                  <h3 class="project-title">ColorLens
-                  </h3>
-                </a>
-                <p class="project-category">ColorLens is a simple and fast tool for converting and copying colors like HEX, RGB, and HSL. It’s designed for developers, designers, and creators who need quick color utilities directly in their browser.</p>
-              </a>
-            </li>
-        </section>
-
-      </article>
-
-      <!-- BLOG  -->
-      <article class="projects" data-page="projects">
-        <header>
-          <h2 class="h2 article-title">Projects</h2>
-        </header>
-
-        <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="https://krishnatadi.github.io/package-name-checker/#/package-name-checker" target="_blank">
-                <figure class="blog-banner-box">
-                  <img src="./images/package-name-checker.JPG" alt="Package-Name-Checker" loading="lazy">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category"></p>
-                    <!-- <span class="dot"></span> -->
-                  </div>
-                  <h3 class="h3 blog-item-title">
-                        Package Name Checker
-                    </h3>
-                  <p class="blog-text">
-                    The Package Name Checker tool was build using ReactJS which allows developers and package authors to quickly verify if their desired package name is available on NPM or PyPi. This tool reduces the hassle of navigating both package repositories individually, providing a one-stop solution for all your package name checking needs.
-                  </p>
-                </div>
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-                <figure class="blog-banner-box">
-                  <img src="./images/publication-1.JPG" alt="Behaviour of rubberized concrete under impact" loading="lazy">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category"></p>
-                    <!-- <span class="dot"></span> -->
-                  </div>
-                  <h3 class="h3 blog-item-title">Behaviourof Rubberized Concrete Under Impact Loading
-                  </h3>
-                  <p class="blog-text">
-                    Rubberized concrete is a type of concrete in which natural aggregates are partially replaced
-with rubber aggregates
-                  </p>
-                </div>
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-                <figure class="blog-banner-box">
-                  <img src="./images/publication-2.jpg" alt="Gauging of Benchmark" loading="lazy">
-                </figure>
-                <div class="blog-content">
-                  <div class="blog-meta">
-                    <p class="blog-category"></p>
-                    <!-- <span class="dot"></span> -->
-                  </div>
-                  <h3 class="h3 blog-item-title">Gauging of Benchmark
-                  </h3>
-                  <p class="blog-text">
-                    Bench mark is point of known elevation i.e. R.L. This is the point for starting of Levelling work. There are different types of bench mark. Permanent bench mark,temporory benchmark and arbitrary bench mark.
-                  </p>
-                </div>
-              </a>
-            </li>
-        </section>
-
-      </article>
-
-      <!-- CONTACT -->
-      <article class="contact" data-page="contact">
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61391.30497432738!2d80.43209699350439!3d15.91134648953843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4a3f9957c7ae0b%3A0xe4dbc22d57620747!2sBapatla%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1722692020611!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </figure>
-        </section>
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form class="form" data-form method="POST">
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <i class="fa-solid fa-paper-plane"></i>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-          <!-- Loading animation overlay -->
-          <div id="loading-overlay" class="loading-overlay">
-          <div class="spinner"></div>
   </div>
 
-        </section>
+</footer>
 
-      </article>
-    </div>
-  </main>
-
-  <!-- custom js link -->
-  <script src="script.js"></script>
 </body>
 </html>
